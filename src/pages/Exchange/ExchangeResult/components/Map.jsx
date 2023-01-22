@@ -9,8 +9,8 @@ export default function Map({ country }) {
     const [longitude, setLongitude] = useState()
 
     useMemo(() => {
-        getGeoPosition(country).then(({ lat , lng  }) => {
-            if(lat && lng){
+        getGeoPosition(country).then(({ lat, lng }) => {
+            if (lat && lng) {
                 setLatitude(lat)
                 setLongitude(lng)
             }
@@ -19,6 +19,7 @@ export default function Map({ country }) {
     }, [country])
 
     return (
+        (latitude && longitude) &&
         <BingMapsReact
             bingMapsKey={BING_MAP_TOKEN}
             w={'100%'}
