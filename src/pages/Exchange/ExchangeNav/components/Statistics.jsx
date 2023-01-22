@@ -1,23 +1,17 @@
 import {
     Box,
-    chakra,
-    Flex,
     SimpleGrid,
     Stat,
     StatLabel,
     StatNumber,
-    useColorModeValue,
     StatHelpText,
     StatArrow,
     StatGroup
 } from '@chakra-ui/react';
-import { BsPerson } from 'react-icons/bs';
-import { FiServer } from 'react-icons/fi';
 
 function StatsCard({
     title,
-    stat,
-    icon
+    stat
 }) {
     return (
         <StatGroup>
@@ -43,17 +37,14 @@ export default function Statistics({
                 <StatsCard
                     title={'Currencies'}
                     stat={numberOfCountries}
-                    icon={<BsPerson size={'3em'} />}
                 />
                 <StatsCard
                     title={'Last Update'}
                     stat={lastDateOfUpdate}
-                    icon={<FiServer size={'3em'} />}
                 />
                 <StatsCard
                     title={'Queries'}
                     stat={0}
-                    icon={<FiServer size={'3em'} />}
                 />
             </SimpleGrid>
         </Box>

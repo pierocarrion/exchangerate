@@ -4,13 +4,13 @@ export default function Search({ currenciesTo, onClick, setCurrencyTo, setCurren
     return (
         <>
             <form onSubmit={onClick}>
-                <HStack justifyContent={'center'}>
-                    <Box width={'20%'}>
-                        <Select placeholder='Currency Base' onChange={(event) => { setCurrencyBase(event.target.value) }}>
+                <HStack justifyContent={'center'} spacing={5}>
+                    <Box >
+                        <Select placeholder='Currency Base' defaultValue={'usd'} onChange={(event) => { setCurrencyBase(event.target.value) }}>
                             <option value='usd'>USD</option>
                         </Select>
                     </Box>
-                    <Box width={'20%'}>
+                    <Box >
                         <Select placeholder='Currency' onChange={(event) => { setCurrencyTo(event.target.value) }}>
                             {
                                 currenciesTo?.map(({ alphaCode, name }, index) =>
@@ -19,7 +19,7 @@ export default function Search({ currenciesTo, onClick, setCurrencyTo, setCurren
                             }
                         </Select>
                     </Box>
-                    <Box width={'20%'}>
+                    <Box>
                         <Button type='submit'>Search</Button>
                     </Box>
                 </HStack>

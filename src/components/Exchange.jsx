@@ -11,11 +11,10 @@ export default function Exchange() {
     const [currencies, setCurrencies] = useState([])
 
     //Result 
-    const [imgCountry, setImgCountry] = useState('')
     const [currencyResult, setCurrencyResult] = useState('')
 
     //Form
-    const [currencyBase, setCurrencyBase] = useState('')
+    const [currencyBase, setCurrencyBase] = useState('')    //TODO: Add Different Currency bases
     const [currencyTo, setCurrencyTo] = useState('')
 
     const currenciesDisplay = useMemo(() => {
@@ -26,7 +25,15 @@ export default function Exchange() {
             flattenCurrencies.push({ key, ...right })
         });
 
-        return flattenCurrencies
+        return flattenCurrencies.sort((prev, current) => {
+            if (prev.name > current.name) {
+                return 1;
+            }
+            if (prev.name < current.name) {
+                return -1;
+            }
+            return 0
+        })
     }, [currencies]) ?? []
 
     useEffect(() => {
@@ -41,8 +48,6 @@ export default function Exchange() {
         event.preventDefault();
         setCurrencyResult(currencies[currencyTo])
     }
-        console.log('🚀 ~ file: Exchange.jsx:47 ~ onClick ~ currencies', currencies)
-        console.log('🚀 ~ file: Exchange.jsx:47 ~ onClick ~ currencies[currencyTo]', currencies[currencyTo])
 
     return (
         <>
@@ -54,7 +59,7 @@ export default function Exchange() {
                 />
             }>
                 <ExchangeNav currenciesTo={currenciesDisplay} onClick={onClick} setCurrencyBase={setCurrencyBase} setCurrencyTo={setCurrencyTo} />
-                <ExchangeResult imgCountry={imgCountry} currencyResult={currencyResult} />
+                <ExchangeResult currencyResult={currencyResult} />
             </Stack>
         </>
     )

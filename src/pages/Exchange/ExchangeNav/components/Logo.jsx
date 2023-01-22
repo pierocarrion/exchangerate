@@ -2,8 +2,10 @@ import {
     Text,
 } from '@chakra-ui/react';
 
-export const Logo = (props) => {
+export const Logo = () => {
     return (
-        <Text as='samp'>Personal Project</Text>
+        <div>
+            <Text as='samp'>Personal Project</Text>
+        </div>
     );
 };
