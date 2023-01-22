@@ -15,7 +15,7 @@ export default function Exchange() {
 
     //Form
     const [currencyBase, setCurrencyBase] = useState('')    //TODO: Add Different Currency bases
-    const [currencyTo, setCurrencyTo] = useState('')
+    const [currencyTo, setCurrencyTo] = useState('pen')
 
     const currenciesDisplay = useMemo(() => {
         const flattenCurrencies = []
@@ -44,6 +44,10 @@ export default function Exchange() {
             setCurrencies([])
         };
     }, []);
+
+    useMemo(() => {
+        setCurrencyResult(currencies[currencyTo])
+    }, [currencies])
 
     const onClick = (event) => {
         event.preventDefault();

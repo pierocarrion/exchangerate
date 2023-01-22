@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react'
 import { getGeoPosition, BING_MAP_TOKEN } from '../../../../services/GeoPosition'
 
 import BingMapsReact from "bingmaps-react";
+import { AspectRatio} from '@chakra-ui/react';
 
 export default function Map({ country }) {
 
@@ -23,11 +24,13 @@ export default function Map({ country }) {
 
     return (
         (latitude && longitude) &&
+
         <BingMapsReact
             bingMapsKey={BING_MAP_TOKEN}
             w={'100%'}
             rounded={'md'}
             alt={'Map'}
+            borderRadius={'24px'}
             h={{ base: '100%', sm: '400px', lg: '500px' }}
             mapOptions={{
                 navigationBarMode: "square",
