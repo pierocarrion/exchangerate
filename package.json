@@ -1,7 +1,7 @@
 {
-  "name": "exchange-query",
+  "name": "exchangerate",
   "version": "0.1.0",
-  "homepage": "https://pierocarrion.github.io/exchangerate",
+  "homepage": "https://pierocarrion.github.io/exchangerate/",
   "dependencies": {
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
