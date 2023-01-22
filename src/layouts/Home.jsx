@@ -12,5 +12,5 @@ const router = createBrowserRouter([
 ], { basename: process.env.REACT_APP_BASEURL });
 
 export default function Home() {
-    return <RouterProvider base router={router} />
+    return <RouterProvider router={router} />
 }
