@@ -22,7 +22,6 @@ import { getCountryWithCurrency } from '../../../services/GeoPosition';
 export default function ExchangeResult({ currencyResult }) {
 
     const [ country, setCountry] = useState({ country : 'Peru', countryCode: 'PE'})
-    console.log('🚀 ~ file: ExchangeResult.jsx:25 ~ ExchangeResult ~ country', country)
 
     useMemo(() => {
         getCountryWithCurrency(currencyResult?.alphaCode)
