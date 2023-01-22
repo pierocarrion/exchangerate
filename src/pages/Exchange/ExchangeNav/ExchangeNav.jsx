@@ -12,13 +12,13 @@ export default function ExchangeNav({
 
     return (
         <HStack spacing='24px'>
-            <Box width={'30%'}>
+            <Box width={'15%'} align={'center'}>
                 <Logo />
             </Box>
-            <Box width={'50%'}>
+            <Box width={'70%'} >
                 <Search currenciesTo={currenciesTo} onClick={onClick} setCurrencyBase={setCurrencyBase} setCurrencyTo={setCurrencyTo}/>
             </Box>
-            <Box width={'20%'} >
+            <Box width={'15%'} >
                 <Flex color='white'>
                     <Statistics numberOfCountries={currenciesTo?.length} lastDateOfUpdate={currenciesTo ? currenciesTo[0]?.date : new Date().toDateString()} />
                 </Flex>

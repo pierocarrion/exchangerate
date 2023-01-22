@@ -3,7 +3,6 @@ import {
     Container,
     Stack,
     Text,
-    Image,
     Flex,
     Button,
     Heading,
@@ -12,14 +11,24 @@ import {
     useColorModeValue,
     List,
     ListItem,
-    Img
 } from '@chakra-ui/react';
 
 import Flag from 'react-world-flags'
-import GoogleMap from './components/GoogleMap';
-import { COUNTRIES } from '../../../utils/countries';
-export default function ExchangeResult({ imgCountry, imgCountryFlag, currencyResult }) {
-    console.log('🚀 ~ file: ExchangeResult.jsx:18 ~ ExchangeResult ~ currencyResult', imgCountryFlag)
+
+import Map from './components/Map';
+import { useMemo, useState } from 'react';
+import { getCountryWithCurrency } from '../../../services/GeoPosition';
+
+export default function ExchangeResult({ currencyResult }) {
+
+    const [ country, setCountry] = useState({ country : 'Peru', countryCode: 'PE'})
+    console.log('🚀 ~ file: ExchangeResult.jsx:25 ~ ExchangeResult ~ country', country)
+
+    useMemo(() => {
+        getCountryWithCurrency(currencyResult?.alphaCode)
+        .then((result) => setCountry(result))
+    }, [ currencyResult ])
+
     return (
         <Container maxW={'7xl'}>
             <SimpleGrid
@@ -27,16 +36,7 @@ export default function ExchangeResult({ imgCountry, imgCountryFlag, currencyRes
                 spacing={{ base: 8, md: 10 }}
                 py={{ base: 18, md: 24 }}>
                 <Flex>
-                    <Image
-                        rounded={'md'}
-                        alt={'Country image'}
-                        src={imgCountry}
-                        fit={'cover'}
-                        align={'center'}
-                        w={'100%'}
-                        h={{ base: '100%', sm: '400px', lg: '500px' }}
-                    />
-                    <GoogleMap />
+                    <Map country={country?.country} />
                 </Flex>
                 <Stack spacing={{ base: 6, md: 10 }} justifyContent={'center'}>
                     <Stack direction={['column', 'row']} spacing='24px' justifyContent={'center'}>
@@ -48,24 +48,8 @@ export default function ExchangeResult({ imgCountry, imgCountryFlag, currencyRes
                                 Exchange Rate
                             </Heading>
                         </Box>
-                        <Box w='40px' h='40px'>
-                            <Box
-                                rounded={'md'}
-                                alt={'Flag image'}
-                                src={imgCountryFlag}
-                                fit={'cover'}
-                                align={'center'}
-                                w={'5px'}
-                                h={'5px'}
-                            >
-                                {
-                                <svg>
-                                    { imgCountryFlag}
-                                </svg>
-                            }
-                                </Box>
-                                <Flag code={COUNTRIES[currencyResult?.alphaCode] } />
-                            
+                        <Box w='40px' h='40px' >
+                            <Flag align='center' code={country?.countryCode} />
                         </Box>
                     </Stack>
                     <Stack
@@ -77,7 +61,7 @@ export default function ExchangeResult({ imgCountry, imgCountryFlag, currencyRes
                             />
                         }>
                         <Box>
-                            <List spacing={2}>
+                            <List spacing={4}>
                                 <ListItem>
                                     <Text as={'span'} fontWeight={'bold'}>
                                         Currency:
