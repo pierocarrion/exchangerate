@@ -37,7 +37,8 @@ export default function Exchange() {
     }, [currencies]) ?? []
 
     useEffect(() => {
-        getCurrencies().then(({ data }) => setCurrencies(data))
+        getCurrencies()
+            .then(({ data }) => setCurrencies(data))
 
         return () => {
             setCurrencies([])

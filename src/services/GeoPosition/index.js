@@ -8,9 +8,13 @@ export async function getGeoPosition(country) {
     try {
         if (country) {
             const parsedURL = geoPosAPI.replace('COUNTRYNAME', country)
-            const { data } = await axios.get(parsedURL)
-
+            console.log('🚀 ~ file: index.js:11 ~ getGeoPosition ~ parsedURL', parsedURL)
+            const result = await axios.get(parsedURL)
+            console.log('🚀 ~ file: index.js:13 ~ getGeoPosition ~ result', result)
+            const { data } = result
             const { geonames: [{ lat = -12.0266034, lng = -77.1278637 }] } = data
+            
+            console.log('🚀 ~ file: index.js:16 ~ getGeoPosition ~ lat', lat, lng)
 
             if (!lat && !lng) throw new Error('No se pudo obtener las coordenadas')
 
