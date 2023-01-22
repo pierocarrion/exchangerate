@@ -12,5 +12,6 @@ const router = createBrowserRouter([
 ]);
 
 export default function Home() {
-    return <RouterProvider router={router} />
+    // return <RouterProvider router={router} />
+    return <Exchange />
 }
