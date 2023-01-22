@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/exchangerate/static/js/main.b361cb7d.js",
+    "index.html": "/exchangerate/index.html",
+    "main.b361cb7d.js.map": "/exchangerate/static/js/main.b361cb7d.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.b361cb7d.js"
+  ]
+}
