@@ -9,7 +9,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Exchange />,
     },
-], { basename: process.env.REACT_APP_BASEURL });
+], { basename: '/exchangerate' });
 
 export default function Home() {
     return <RouterProvider router={router} />
