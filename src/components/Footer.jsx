@@ -7,7 +7,6 @@ import {
     Text,
     useColorModeValue,
     VisuallyHidden,
-    Heading
 } from '@chakra-ui/react';
 import { FaLinkedin } from 'react-icons/fa';
 

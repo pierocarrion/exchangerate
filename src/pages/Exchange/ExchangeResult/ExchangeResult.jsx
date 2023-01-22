@@ -12,9 +12,14 @@ import {
     useColorModeValue,
     List,
     ListItem,
+    Img
 } from '@chakra-ui/react';
 
-export default function ExchangeResult({ imgCountry, imgCountryFlag}) {
+import Flag from 'react-world-flags'
+import GoogleMap from './components/GoogleMap';
+import { COUNTRIES } from '../../../utils/countries';
+export default function ExchangeResult({ imgCountry, imgCountryFlag, currencyResult }) {
+    console.log('🚀 ~ file: ExchangeResult.jsx:18 ~ ExchangeResult ~ currencyResult', imgCountryFlag)
     return (
         <Container maxW={'7xl'}>
             <SimpleGrid
@@ -31,27 +36,36 @@ export default function ExchangeResult({ imgCountry, imgCountryFlag}) {
                         w={'100%'}
                         h={{ base: '100%', sm: '400px', lg: '500px' }}
                     />
+                    <GoogleMap />
                 </Flex>
                 <Stack spacing={{ base: 6, md: 10 }} justifyContent={'center'}>
                     <Stack direction={['column', 'row']} spacing='24px' justifyContent={'center'}>
-                        <Box w='210px' h='40px'>
+                        <Box w='320px' h='40px'>
                             <Heading
                                 lineHeight={0.6}
                                 fontWeight={500}
                                 fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
-                                Exchange
+                                Exchange Rate
                             </Heading>
                         </Box>
                         <Box w='40px' h='40px'>
-                            <Image
+                            <Box
                                 rounded={'md'}
                                 alt={'Flag image'}
                                 src={imgCountryFlag}
                                 fit={'cover'}
                                 align={'center'}
-                                w={'40px'}
-                                h={'40px'}
-                            />
+                                w={'5px'}
+                                h={'5px'}
+                            >
+                                {
+                                <svg>
+                                    { imgCountryFlag}
+                                </svg>
+                            }
+                                </Box>
+                                <Flag code={COUNTRIES[currencyResult?.alphaCode] } />
+                            
                         </Box>
                     </Stack>
                     <Stack
@@ -68,31 +82,31 @@ export default function ExchangeResult({ imgCountry, imgCountryFlag}) {
                                     <Text as={'span'} fontWeight={'bold'}>
                                         Currency:
                                     </Text>{' '}
-                                    leather strap
+                                    {currencyResult?.name}
                                 </ListItem>
                                 <ListItem>
                                     <Text as={'span'} fontWeight={'bold'}>
                                         Currency code:
                                     </Text>{' '}
-                                    leather strap
+                                    {currencyResult?.alphaCode}
                                 </ListItem>
                                 <ListItem>
                                     <Text as={'span'} fontWeight={'bold'}>
                                         Exchange rate:
                                     </Text>{' '}
-                                    20 mm
+                                    {currencyResult?.rate}
                                 </ListItem>
                                 <ListItem>
                                     <Text as={'span'} fontWeight={'bold'}>
                                         Inverse rate:
                                     </Text>{' '}
-                                    20 mm
+                                    {currencyResult?.inverseRate}
                                 </ListItem>
                                 <ListItem>
                                     <Text as={'span'} fontWeight={'bold'}>
                                         Updated At:
                                     </Text>{' '}
-                                    Steel
+                                    {currencyResult?.date}
                                 </ListItem>
                             </List>
                         </Box>
