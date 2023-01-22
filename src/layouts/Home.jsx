@@ -6,12 +6,11 @@ import Exchange from "../components/Exchange";
 
 const router = createBrowserRouter([
     {
-        path: "/exchangerate",
+        path: "/",
         element: <Exchange />,
     },
 ]);
 
 export default function Home() {
-    // return <RouterProvider router={router} />
-    return <Exchange />
+    return <RouterProvider router={router} />
 }
