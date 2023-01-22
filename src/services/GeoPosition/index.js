@@ -10,7 +10,14 @@ export async function getGeoPosition(country) {
             const parsedURL = geoPosAPI.replace('COUNTRYNAME', country)
             const result = await axios.get(parsedURL)
             const { data } = result
-            const { geonames: [{ lat = -12.0266034, lng = -77.1278637 }] } = data
+            const {
+                geonames: [
+                    {
+                        lat = -12.0266034,
+                        lng = -77.1278637
+                    }
+                ]
+            } = data
 
             if (!lat && !lng) throw new Error('No se pudo obtener las coordenadas')
 
@@ -24,9 +31,21 @@ export async function getGeoPosition(country) {
 export async function getCountryWithCurrency(currency) {
     try {
         if (currency) {
-            const { data: [{ name: { common: country = 'Peru' }, cca2: countryCode = 'PE' }] = [] } = await axios.get(`${currencyToCountryAPI}/${currency}`)
+            const {
+                data: [
+                    {
+                        name: {
+                            common: country = 'Peru'
+                        },
+                        cca2: countryCode = 'PE'
+                    }
+                ] = []
+            }
+                = await axios.get(`${currencyToCountryAPI}/${currency}`)
+
             return { country, countryCode }
         }
+        return { country : 'Peru', countryCode : 'PE'}
     } catch (error) {
         throw new Error(error?.message)
     }

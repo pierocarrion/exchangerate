@@ -22,7 +22,6 @@ function StatsCard({
                     <StatArrow type='increase' />
                 </StatHelpText>
             </Stat>
-
         </StatGroup>
     );
 }

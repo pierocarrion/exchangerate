@@ -10,14 +10,15 @@ export default function Map({ country }) {
 
     useMemo(() => {
         getGeoPosition(country)
-            .then(({ lat, lng }) => {
-                if (lat && lng) {
+            .then((result) => {
+                if (result) {
+                    const { lat, lng } = result
                     setLatitude(lat)
                     setLongitude(lng)
                 }
             })
             .catch(console.log)
-            
+
     }, [country])
 
     return (

@@ -58,7 +58,8 @@ export default function Exchange() {
                     width={'100%'}
                     ml={'100px'}
                 />
-            }>
+            }
+                userSelect={'none'}>
                 <ExchangeNav currenciesTo={currenciesDisplay} onClick={onClick} setCurrencyBase={setCurrencyBase} setCurrencyTo={setCurrencyTo} />
                 <ExchangeResult currencyResult={currencyResult} />
             </Stack>
